@@ -12,7 +12,7 @@ spec:
     - name: image-repo
       value: quay.io/alexander_seymour_ibm/amazing-next-app-backend
     - name: app-name
-      value: amazing-next-app-backend
+      value: backend
   workspaces:
     - name: backend-pipeline-shared-data
       volumeClaimTemplate:

@@ -2,10 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: express-sample-app
-    app.kubernetes.io/instance: express-sample-app-instance
-    app.kubernetes.io/name: express-sample-app
-  name: express-sample-app
+    app: amazing-next-app-backend
+    app.kubernetes.io/instance: amazing-next-app-backend-instance
+    app.kubernetes.io/name: amazing-next-app-backend
+  name: amazing-next-app-backend
 spec:
   ports:
     - name: http
@@ -13,7 +13,7 @@ spec:
       protocol: TCP
       targetPort: 3000
   selector:
-    app.kubernetes.io/instance: express-sample-app-instance
-    app.kubernetes.io/name: express-sample-app
+    app.kubernetes.io/instance: amazing-next-app-backend-instance
+    app.kubernetes.io/name: amazing-next-app-backend
   sessionAffinity: None
   type: ClusterIP
