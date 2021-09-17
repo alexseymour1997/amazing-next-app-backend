@@ -1,0 +1,30 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: vcs-trigger
+spec:
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        generateName: amazing-next-app-backend-pipeline-run-
+      spec:
+        serviceAccountName: backend-pipeline-run-bot
+        pipelineRef:
+          name: amazing-next-app-backend-pipeline
+        params:
+          - name: source-repo
+            value: https://github.com/alexseymour1997/amazing-next-app-backend.git
+          - name: image-repo
+            value: quay.io/alexander_seymour_ibm/amazing-next-app-backend
+          - name: app-name
+            value: backend
+        workspaces:
+          - name: backend-pipeline-shared-data
+            volumeClaimTemplate:
+              spec:
+                accessModes:
+                  - ReadWriteOnce
+                resources:
+                  requests:
+                    storage: 1Gi
